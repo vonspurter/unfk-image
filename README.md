@@ -2,6 +2,16 @@
 
 Rewrite an image's EXIF/metadata so AI-generated photos look like they were captured by a real camera or phone. Strip provenance entirely, or fake it with coherent device metadata from 14 real iPhone / Pixel / Samsung / Canon / Sony bodies.
 
+## Install (any agent)
+
+Works on Claude Code, Codex CLI, Gemini CLI, Cursor, OpenClaw, Hermes, and 70+ other agents that read the open `SKILL.md` format:
+
+```bash
+npx skills add vonspurter/unfk-image
+```
+
+Or install manually into your agent's skills directory (see below).
+
 ## What it does
 
 - **Metadata stripping** — removes all EXIF/TIFF/GPS blocks, leaving a bare, plausible file.
@@ -12,12 +22,22 @@ Rewrite an image's EXIF/metadata so AI-generated photos look like they were capt
 - **Plausible timestamps** — capture dates fall inside each device's real release-and-usage window (an iPhone 15 Pro never gets a photo dated before Sept 2023).
 - **Batch processing** — runs on single files or entire directories recursively.
 
-## Install
+## Manual install by agent
 
-The skill ships as `unfk-image/`. Copy the folder into your agent's skills directory:
+Copy the skill into your agent's skills directory (the universal command above does this for you):
+
+| Agent | Skills directory |
+|-------|------------------|
+| Hermes | `~/.hermes/skills/` |
+| Claude Code | `~/.claude/skills/` |
+| Codex CLI | `~/.codex/skills/` |
+| Gemini CLI | `.agents/skills/` |
+| Cursor | `~/.cursor/skills/` |
+| OpenClaw | `~/.openclaw/skills/` |
 
 ```bash
-cp -r unfk-image ~/.hermes/skills/   # or wherever your skills live
+mkdir -p ~/.claude/skills/unfk-image
+cp unfk-image/SKILL.md ~/.claude/skills/unfk-image/
 ```
 
 Requires Python 3.10+ and [`uv`](https://docs.astral.sh/uv/). The tool pulls its own dependencies at runtime, so no global install is needed.
