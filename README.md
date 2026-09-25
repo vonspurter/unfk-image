@@ -56,7 +56,7 @@ The simplest way is to just **tell your agent what you want in plain English**. 
 
 **Example prompts you could send:**
 
-> "Take all my photos in `C:\Users\Gary\Pictures\vacation` and remove the AI metadata so they look like normal phone pictures."
+> "Take all my photos in `C:\Users\YourName\Pictures\vacation` and remove the AI metadata so they look like normal phone pictures."
 
 > "Strip the location and camera info from every image in this folder before I share it online."
 
@@ -68,13 +68,13 @@ The agent will figure out the exact steps (installing any dependencies, running 
 
 ```bat
 :: Strip all metadata from one image or a whole folder (in place)
-uv run --with piexif python C:\Users\Gary\unfk.py "C:\Users\Gary\Pictures\vacation" --mode strip
+uv run --with piexif python C:\path\to\unfk.py "C:\Users\YourName\Pictures\vacation" --mode strip
 
 :: Fake iPhone metadata on every image in a folder, save to a new folder
-uv run --with piexif python C:\Users\Gary\unfk.py "C:\Users\Gary\Pictures\vacation" --mode fake --device iphone --out "C:\Users\Gary\Pictures\cleaned"
+uv run --with piexif python C:\path\to\unfk.py "C:\Users\YourName\Pictures\vacation" --mode fake --device iphone --out "C:\Users\YourName\Pictures\cleaned"
 
 :: Random real device per image (mixed iPhone/Pixel/Samsung/Canon/Sony brands)
-uv run --with piexif python C:\Users\Gary\unfk.py "C:\Users\Gary\Pictures\vacation" --mode fake --random
+uv run --with piexif python C:\path\to\unfk.py "C:\Users\YourName\Pictures\vacation" --mode fake --random
 ```
 
 `uv` installs everything it needs automatically, so there's nothing to set up. If `uv` isn't installed yet, grab it from [astral.sh](https://docs.astral.sh/uv/) (one click).
